@@ -1,6 +1,6 @@
 export const artworks = [
   {
-    id: "abstract-composition-1",
+    id: "artwork-1",
     title: "Abstract Composition I",
     year: 2024,
     category: "paintings",
@@ -10,12 +10,12 @@ export const artworks = [
     price: "Upon Request",
     available: true,
     featured: true,
-    images: ["abstract-composition-1.jpg", "abstract-composition-1-detail.jpg"],
-    description: "A vibrant exploration of color relationships and geometric abstraction. This piece emerged from months of study into how warm and cool tones interact across large surfaces, creating visual depth through careful layering and contrast.\n\nThe composition draws inspiration from mid-century color field painters while introducing contemporary sensibilities through its dynamic brushwork and textural variations.",
-    artistNote: "This piece represents a turning point in my exploration of pure color. I wanted to capture that fleeting moment when colors seem to vibrate against each other, creating almost musical harmonies on the canvas."
+    images: ["IMG_1858.HEIC"],
+    description: "A vibrant exploration of color relationships and geometric abstraction. This piece emerged from months of study into how warm and cool tones interact across large surfaces, creating visual depth through careful layering and contrast.",
+    artistNote: "This piece represents a turning point in my exploration of pure color."
   },
   {
-    id: "urban-landscape",
+    id: "artwork-2",
     title: "Urban Landscape",
     year: 2024,
     category: "paintings",
@@ -25,13 +25,12 @@ export const artworks = [
     price: "Upon Request",
     available: true,
     featured: true,
-    images: ["urban-landscape.jpg"],
-    description: "This work captures the interplay between architectural geometry and atmospheric light in urban environments. The composition distills the essence of city structures into essential forms, allowing color and light to tell the story of a moment suspended in time.",
-    seriesDescription: "The Urban Reflections series began in 2022 as an exploration of how contemporary architecture interacts with natural light and atmospheric conditions. Each work in this series focuses on a specific moment of visual transformation, capturing the ephemeral beauty that emerges when rigid geometric structures are softened by shifting light.",
-    artistNote: "There's a particular hour before sunset when the glass facades of modern buildings become mirrors reflecting the changing sky. This painting attempts to capture that transformative moment."
+    images: ["IMG_1861.HEIC"],
+    description: "This work captures the interplay between architectural geometry and atmospheric light in urban environments. The composition distills the essence of city structures into essential forms.",
+    artistNote: "There's a particular hour before sunset when everything transforms."
   },
   {
-    id: "still-life-study",
+    id: "artwork-3",
     title: "Still Life Study",
     year: 2024,
     category: "paintings",
@@ -40,11 +39,11 @@ export const artworks = [
     price: "$4,800",
     available: true,
     featured: true,
-    images: ["still-life-study.jpg"],
-    description: "A contemporary interpretation of the classical still life tradition. Through soft, rounded forms and a restrained palette of blush and neutral tones, this work invites quiet contemplation of everyday objects elevated to subjects of artistic meditation."
+    images: ["IMG_1864.HEIC"],
+    description: "A contemporary interpretation of the classical still life tradition. Through soft, rounded forms and a restrained palette, this work invites quiet contemplation."
   },
   {
-    id: "geometric-abstraction",
+    id: "artwork-4",
     title: "Geometric Abstraction",
     year: 2024,
     category: "paintings",
@@ -54,11 +53,11 @@ export const artworks = [
     price: "Upon Request",
     available: true,
     featured: false,
-    images: ["geometric-abstraction.jpg", "geometric-abstraction-detail.jpg"],
-    description: "An exploration of pure form and rich, earthy tones. This painting investigates the emotional weight of color through carefully constructed geometric relationships, creating a meditative space for the viewer."
+    images: ["IMG_1866.HEIC"],
+    description: "An exploration of pure form and rich, earthy tones. This painting investigates the emotional weight of color through carefully constructed geometric relationships."
   },
   {
-    id: "minimalist-study",
+    id: "artwork-5",
     title: "Minimalist Study",
     year: 2023,
     category: "paintings",
@@ -67,11 +66,11 @@ export const artworks = [
     price: "$3,200",
     available: true,
     featured: false,
-    images: ["minimalist-study.jpg"],
-    description: "A study in reduction and essence. By stripping away all but the most essential elements, this work creates space for contemplation and invites viewers to find meaning in simplicity."
+    images: ["IMG_1869.HEIC"],
+    description: "A study in reduction and essence. By stripping away all but the most essential elements, this work creates space for contemplation."
   },
   {
-    id: "colorful-collage",
+    id: "artwork-6",
     title: "Colorful Collage",
     year: 2023,
     category: "mixed-media",
@@ -80,27 +79,11 @@ export const artworks = [
     price: "$2,400",
     available: true,
     featured: false,
-    images: ["colorful-collage.jpg"],
-    description: "A playful exploration of color, texture, and form through mixed media techniques. This piece combines painted elements with found materials to create a dynamic composition that rewards close examination."
+    images: ["IMG_1871.HEIC"],
+    description: "A playful exploration of color, texture, and form through mixed media techniques. This piece combines painted elements with found materials."
   },
   {
-    id: "installation-view",
-    title: "Installation View",
-    year: 2024,
-    category: "installations",
-    medium: "Site-Specific Installation",
-    dimensions: "Variable",
-    price: "Commission Only",
-    available: false,
-    featured: false,
-    images: ["installation-view.jpg", "installation-view-2.jpg", "installation-view-3.jpg"],
-    description: "A site-specific installation exploring the relationship between art objects and their surrounding space. This work transforms the gallery environment, inviting viewers to become active participants in the experience.",
-    exhibitions: [
-      { title: "New Perspectives", venue: "Museum of Contemporary Art, New York", year: 2024 }
-    ]
-  },
-  {
-    id: "charcoal-composition",
+    id: "artwork-7",
     title: "Charcoal Composition",
     year: 2023,
     category: "drawings",
@@ -109,11 +92,11 @@ export const artworks = [
     price: "$1,800",
     available: true,
     featured: false,
-    images: ["charcoal-composition.jpg"],
-    description: "A study in light and shadow rendered in rich charcoal. This drawing explores the full tonal range possible with traditional materials, from the softest grays to deep, velvety blacks."
+    images: ["IMG_1873.HEIC"],
+    description: "A study in light and shadow rendered in rich charcoal. This drawing explores the full tonal range possible with traditional materials."
   },
   {
-    id: "textured-layers",
+    id: "artwork-8",
     title: "Textured Layers",
     year: 2023,
     category: "mixed-media",
@@ -122,11 +105,11 @@ export const artworks = [
     price: "Upon Request",
     available: true,
     featured: false,
-    images: ["textured-layers.jpg"],
-    description: "An investigation into surface and depth through layered materials and techniques. This work builds up multiple strata of paint and media, creating a rich archaeological record of its own making."
+    images: ["IMG_1875.HEIC"],
+    description: "An investigation into surface and depth through layered materials and techniques. This work builds up multiple strata of paint and media."
   },
   {
-    id: "watercolor-study",
+    id: "artwork-9",
     title: "Watercolor Study",
     year: 2023,
     category: "paintings",
@@ -135,40 +118,11 @@ export const artworks = [
     price: "$950",
     available: true,
     featured: false,
-    images: ["watercolor-study.jpg"],
-    description: "A delicate exploration of transparency and flow in watercolor. This study captures the unique qualities of the medium—its luminosity, unpredictability, and capacity for both control and spontaneity."
+    images: ["IMG_1878.HEIC"],
+    description: "A delicate exploration of transparency and flow in watercolor. This study captures the unique qualities of the medium."
   },
   {
-    id: "mural-commission",
-    title: "Mural Commission",
-    year: 2023,
-    category: "commissions",
-    medium: "Acrylic on Wall",
-    dimensions: "12' × 8'",
-    price: "Commissioned",
-    available: false,
-    featured: false,
-    images: ["mural-commission.jpg"],
-    description: "A large-scale mural created for a private residence. This commissioned work transforms the living space, bringing color and energy to the home while reflecting the client's personal aesthetic."
-  },
-  {
-    id: "gallery-exhibition",
-    title: "Gallery Exhibition",
-    year: 2023,
-    category: "installations",
-    medium: "Mixed Media Installation",
-    dimensions: "Gallery Space",
-    price: "Not for Sale",
-    available: false,
-    featured: false,
-    images: ["gallery-exhibition.jpg"],
-    description: "Documentation of a solo exhibition featuring works from multiple series. This installation view shows the dialogue between pieces when thoughtfully arranged in conversation with each other.",
-    exhibitions: [
-      { title: "Contemporary Visions", venue: "MoMA PS1, New York", year: 2023 }
-    ]
-  },
-  {
-    id: "texture-detail",
+    id: "artwork-10",
     title: "Texture Detail",
     year: 2022,
     category: "paintings",
@@ -177,41 +131,11 @@ export const artworks = [
     price: "$2,800",
     available: true,
     featured: false,
-    images: ["texture-detail.jpg"],
-    description: "An intimate study focusing on surface texture and material presence. This work invites close examination, revealing the physical nature of paint and the artist's hand in its application."
+    images: ["IMG_1880.HEIC"],
+    description: "An intimate study focusing on surface texture and material presence. This work invites close examination."
   },
   {
-    id: "diptych-composition",
-    title: "Diptych Composition",
-    year: 2022,
-    category: "paintings",
-    series: "Color Studies",
-    medium: "Oil on Canvas",
-    dimensions: "48\" × 72\" (diptych)",
-    price: "Upon Request",
-    available: false,
-    featured: false,
-    images: ["diptych-composition.jpg"],
-    description: "A two-panel work exploring dialogue and tension between complementary compositions. The diptych format allows for both unity and counterpoint, creating a dynamic viewing experience."
-  },
-  {
-    id: "outdoor-installation",
-    title: "Outdoor Installation",
-    year: 2022,
-    category: "installations",
-    medium: "Steel & Paint",
-    dimensions: "Variable",
-    price: "Commission Only",
-    available: false,
-    featured: false,
-    images: ["outdoor-installation.jpg"],
-    description: "A sculptural installation designed for an outdoor setting. This work engages with its natural surroundings, changing character with the seasons and time of day.",
-    exhibitions: [
-      { title: "Sculpture Park Exhibition", venue: "Storm King Art Center", year: 2022 }
-    ]
-  },
-  {
-    id: "urban-reflections-5",
+    id: "artwork-11",
     title: "Urban Reflections No. 5",
     year: 2023,
     category: "paintings",
@@ -221,12 +145,11 @@ export const artworks = [
     price: "$8,500",
     available: true,
     featured: false,
-    images: ["urban-reflections-5.jpg"],
-    description: "The fifth work in the ongoing Urban Reflections series. This painting captures the particular quality of morning light as it strikes the glass facades of downtown buildings, transforming rigid geometry into fluid abstraction.",
-    seriesDescription: "The Urban Reflections series began in 2022 as an exploration of how contemporary architecture interacts with natural light and atmospheric conditions. Each work in this series focuses on a specific moment of visual transformation, capturing the ephemeral beauty that emerges when rigid geometric structures are softened by shifting light."
+    images: ["IMG_1882.HEIC"],
+    description: "The fifth work in the ongoing Urban Reflections series. This painting captures the particular quality of morning light."
   },
   {
-    id: "urban-reflections-6",
+    id: "artwork-12",
     title: "Urban Reflections No. 6",
     year: 2023,
     category: "paintings",
@@ -236,32 +159,11 @@ export const artworks = [
     price: "$9,200",
     available: true,
     featured: false,
-    images: ["urban-reflections-6.jpg"],
-    description: "A study of golden hour light transforming urban architecture. Warm amber tones suffuse the composition, suggesting the transformative power of natural light on built environments.",
-    seriesDescription: "The Urban Reflections series began in 2022 as an exploration of how contemporary architecture interacts with natural light and atmospheric conditions. Each work in this series focuses on a specific moment of visual transformation, capturing the ephemeral beauty that emerges when rigid geometric structures are softened by shifting light."
+    images: ["IMG_1884.HEIC"],
+    description: "A study of golden hour light transforming urban architecture. Warm amber tones suffuse the composition."
   },
   {
-    id: "urban-reflections-7",
-    title: "Urban Reflections No. 7",
-    year: 2024,
-    category: "paintings",
-    series: "Urban Reflections",
-    medium: "Oil on Canvas",
-    dimensions: "42\" × 52\"",
-    price: "Upon Request",
-    available: true,
-    featured: false,
-    images: ["urban-reflections-7.jpg", "urban-reflections-7-detail.jpg", "urban-reflections-7-installation.jpg"],
-    description: "Urban Reflections No. 7 captures a fleeting moment of harmony between architectural geometry and atmospheric light. The soft golden glow of late afternoon sunlight transforms rigid glass facades into fluid, almost organic surfaces that seem to breathe with shifting luminosity.\n\nThrough carefully layered glazing techniques and a restrained palette of muted blues, golds, and warm ochres, this piece invites contemplation on the liminal space between constructed and natural environments. The work embodies my ongoing investigation into how urban environments can reveal unexpected moments of beauty and transcendence.\n\nCreated over six weeks in my Brooklyn studio, each layer of paint was allowed to fully cure before the next application, building depth and complexity. The meticulous process allowed for precise control while allowing for moments of controlled spontaneity, creating surfaces that shift subtly with changing light.",
-    seriesDescription: "The Urban Reflections series began in 2022 as an exploration of how contemporary architecture interacts with natural light and atmospheric conditions. Each work in this series focuses on a specific moment of visual transformation, capturing the ephemeral beauty that emerges when rigid geometric structures are softened by shifting light.\n\nWhat unites these pieces is not their subject matter, but their ontological investigation into the nature of perception and temporality. They ask viewers to reconsider their relationship with urban spaces—to see not just buildings and streets, but living canvases that constantly evolve with light, weather, and time of day.",
-    artistNote: "There's a particular moment in my neighborhood when evening light strikes a row of glass facades, and for just ten minutes, the entire street seems to transform into something otherworldly. This painting is my attempt to capture that transformation, that moment when the mundane becomes transcendent.",
-    exhibitions: [
-      { title: "Contemporary Visions", venue: "MoMA PS1, New York", year: 2024 },
-      { title: "Urban Landscapes Exhibition", venue: "Gagosian Gallery, NYC", year: 2024 }
-    ]
-  },
-  {
-    id: "color-theory-1",
+    id: "artwork-13",
     title: "Color Theory I",
     year: 2024,
     category: "paintings",
@@ -271,11 +173,11 @@ export const artworks = [
     price: "$6,500",
     available: true,
     featured: false,
-    images: ["color-theory-1.jpg"],
-    description: "An exploration of color interaction based on Josef Albers' principles. This work investigates how colors change in perception based on their surrounding context, creating subtle optical effects through carefully calibrated hue relationships."
+    images: ["IMG_1886.HEIC"],
+    description: "An exploration of color interaction based on Josef Albers' principles. This work investigates how colors change in perception."
   },
   {
-    id: "geometric-dreams",
+    id: "artwork-14",
     title: "Geometric Dreams",
     year: 2024,
     category: "paintings",
@@ -284,11 +186,11 @@ export const artworks = [
     price: "$5,200",
     available: true,
     featured: false,
-    images: ["geometric-dreams.jpg"],
-    description: "A dreamlike composition where geometric forms float in ambiguous space. The work balances precision with softness, creating an environment that feels both structured and ethereal."
+    images: ["IMG_1888.HEIC"],
+    description: "A dreamlike composition where geometric forms float in ambiguous space. The work balances precision with softness."
   },
   {
-    id: "monochrome-series",
+    id: "artwork-15",
     title: "Monochrome Series",
     year: 2024,
     category: "paintings",
@@ -297,11 +199,11 @@ export const artworks = [
     price: "$4,200",
     available: true,
     featured: false,
-    images: ["monochrome-series.jpg"],
-    description: "A study in the full range of a single color family. By restricting the palette to variations of one hue, this work demonstrates how much visual richness can emerge from apparent simplicity."
+    images: ["IMG_1889.HEIC"],
+    description: "A study in the full range of a single color family. By restricting the palette, this work demonstrates visual richness from simplicity."
   },
   {
-    id: "light-shadow",
+    id: "artwork-16",
     title: "Light & Shadow",
     year: 2023,
     category: "drawings",
@@ -310,11 +212,11 @@ export const artworks = [
     price: "$1,400",
     available: true,
     featured: false,
-    images: ["light-shadow.jpg"],
-    description: "A graphite drawing exploring the fundamental elements of visual perception: light and shadow. Through patient mark-making, the work builds up subtle gradations that capture the way light moves across surfaces."
+    images: ["IMG_1891.HEIC"],
+    description: "A graphite drawing exploring the fundamental elements of visual perception: light and shadow."
   },
   {
-    id: "contemporary-flora",
+    id: "artwork-17",
     title: "Contemporary Flora",
     year: 2024,
     category: "paintings",
@@ -323,11 +225,11 @@ export const artworks = [
     price: "$3,800",
     available: true,
     featured: false,
-    images: ["contemporary-flora.jpg"],
-    description: "A modern interpretation of botanical subjects. This work abstracts natural forms into essential shapes and colors, finding the geometry and rhythm inherent in organic growth."
+    images: ["IMG_1892.HEIC"],
+    description: "A modern interpretation of botanical subjects. This work abstracts natural forms into essential shapes and colors."
   },
   {
-    id: "abstract-reflections",
+    id: "artwork-18",
     title: "Abstract Reflections",
     year: 2024,
     category: "mixed-media",
@@ -336,8 +238,22 @@ export const artworks = [
     price: "$5,800",
     available: true,
     featured: false,
-    images: ["abstract-reflections.jpg"],
-    description: "A mixed media work combining painting with collage and textural elements. The layered approach creates visual depth and rewards extended viewing, revealing new details upon each encounter."
+    images: ["IMG_1893.HEIC"],
+    description: "A mixed media work combining painting with collage and textural elements. The layered approach creates visual depth."
+  },
+  {
+    id: "artwork-19",
+    title: "Featured Work",
+    year: 2024,
+    category: "paintings",
+    series: "Color Studies",
+    medium: "Oil on Canvas",
+    dimensions: "48\" × 60\"",
+    price: "Upon Request",
+    available: true,
+    featured: true,
+    images: ["IMG_2206.JPG"],
+    description: "A vibrant exploration showcasing the culmination of recent artistic investigations. This piece represents a bold statement in color and form.",
+    artistNote: "This work embodies everything I've been working toward."
   }
 ]
-

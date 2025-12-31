@@ -179,13 +179,51 @@
   border: 1px solid var(--color-text);
   background: transparent;
   color: var(--color-text);
-  transition: all var(--transition-base);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--color-text);
+  transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
 }
 
 .btn:hover {
-  background: var(--color-text);
   color: var(--color-bg);
+}
+
+.btn:hover::before {
+  left: 0;
+}
+
+/* Button shine effect */
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: skewX(-20deg);
+  transition: none;
+}
+
+.btn:hover::after {
+  animation: btnShine 0.6s ease forwards;
+}
+
+@keyframes btnShine {
+  to { left: 150%; }
 }
 
 .btn--filled {
@@ -219,13 +257,27 @@
 .card__image {
   aspect-ratio: 4/5;
   overflow: hidden;
+  position: relative;
+}
+
+.card__image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.2) 0%, transparent 40%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover .card__image::after {
+  opacity: 1;
 }
 
 .card__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--transition-slow);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card:hover .card__image img {

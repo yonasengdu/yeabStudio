@@ -63,13 +63,6 @@ export default function Header() {
             className={({ isActive }) => `nav__link ${isActive ? 'nav__link--active' : ''}`}
             onClick={closeMenu}
           >
-            Portfolio
-          </NavLink>
-          <NavLink 
-            to="/portfolio" 
-            className="nav__link"
-            onClick={closeMenu}
-          >
             Artworks
           </NavLink>
           <a href="/#contact" className="nav__link" onClick={closeMenu}>
