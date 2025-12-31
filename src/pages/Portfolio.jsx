@@ -187,7 +187,7 @@ export default function Portfolio() {
             <Reveal direction="left">
               <div className="portfolio-featured__image">
                 <img 
-                  src="/images/artworks/urban-reflections-series.jpg" 
+                  src="/images/artworks/3.jpg" 
                   alt="Urban Reflections Series"
                   onError={(e) => {
                     e.target.style.display = 'none'

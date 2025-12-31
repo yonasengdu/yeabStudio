@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Cursor from './components/Cursor'
 import Home from './pages/Home'
 import About from './pages/About'
 import Portfolio from './pages/Portfolio'
@@ -10,7 +9,6 @@ import ArtworkDetail from './pages/ArtworkDetail'
 function App() {
   return (
     <>
-      <Cursor />
       <Header />
       <main>
         <Routes>

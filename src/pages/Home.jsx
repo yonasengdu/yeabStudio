@@ -5,6 +5,24 @@ import { exhibitions } from '../data/exhibitions'
 import ContactForm from '../components/ContactForm'
 import { useScrollReveal, useCountUp } from '../hooks/useScrollReveal'
 
+// Hook to detect if user has scrolled
+function useHasScrolled(threshold = 100) {
+  const [hasScrolled, setHasScrolled] = useState(false)
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > threshold) {
+        setHasScrolled(true)
+      }
+    }
+    
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [threshold])
+  
+  return hasScrolled
+}
+
 // Scroll reveal wrapper component
 function Reveal({ children, className = '', delay = 0, direction = 'up' }) {
   const [ref, isVisible] = useScrollReveal({ threshold: 0.1 })
@@ -87,6 +105,9 @@ function MagneticButton({ children, to, className = '' }) {
 export default function Home() {
   const featuredWorks = artworks.filter(a => a.featured).slice(0, 3)
   const recentExhibitions = exhibitions.slice(0, 3)
+  
+  // Hide scroll indicator after first scroll
+  const hasScrolled = useHasScrolled(50)
   
   // Parallax effect for hero elements
   const [scrollY, setScrollY] = useState(0)
@@ -171,13 +192,13 @@ export default function Home() {
             </div>
             <h1 className="hero__title">
               <span className="hero__title-line fade-up" style={{ animationDelay: '100ms' }}>
-                {'ARTIST'.split('').map((char, i) => (
+                {'YEABSRA'.split('').map((char, i) => (
                   <span key={i} className="hero__char" style={{ animationDelay: `${i * 80}ms` }}>{char}</span>
                 ))}
               </span>
               <span className="hero__title-line hero__title-line--outline fade-up" style={{ animationDelay: '200ms' }}>
-                {'NAME'.split('').map((char, i) => (
-                  <span key={i} className="hero__char hero__char--outline" style={{ animationDelay: `${500 + i * 80}ms` }}>{char}</span>
+                {'YEMRU'.split('').map((char, i) => (
+                  <span key={i} className="hero__char hero__char--outline" style={{ animationDelay: `${560 + i * 80}ms` }}>{char}</span>
                 ))}
               </span>
             </h1>
@@ -245,7 +266,7 @@ export default function Home() {
           </div>
         </div>
         
-        <div className="hero__scroll">
+        <div className={`hero__scroll ${hasScrolled ? 'hero__scroll--hidden' : ''}`}>
           <div className="hero__scroll-icon">
             <div className="hero__scroll-wheel"></div>
           </div>
@@ -297,7 +318,7 @@ export default function Home() {
               <div className="statement__author-line"></div>
               <div className="statement__author-info">
                 <span className="statement__author-dash">—</span>
-                <span className="statement__author-name">Artist Name</span>
+                <span className="statement__author-name">Yeabsra Yemru</span>
               </div>
               <div className="statement__author-line"></div>
             </div>
@@ -336,7 +357,7 @@ export default function Home() {
                 
                 <div className="home-intro__image">
                   <img 
-                    src="/images/artist/portrait.jpg" 
+                    src="/images/artist/portrait.png" 
                     alt="Artist in studio"
                     onError={(e) => {
                       e.target.style.display = 'none'
@@ -594,7 +615,7 @@ export default function Home() {
               <Reveal delay={100}>
                 <div className="home-exhibitions__image">
                   <img 
-                    src="/images/artworks/featured-exhibition.jpg" 
+                    src="/images/artworks/16.jpg" 
                     alt="New Perspectives Exhibition"
                     onError={(e) => {
                       e.target.style.display = 'none'

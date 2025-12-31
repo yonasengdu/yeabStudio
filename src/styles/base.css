@@ -299,15 +299,9 @@ html {
   }
 }
 
-/* Hide default cursor when custom cursor is active */
-@media (hover: hover) {
-  body {
-    cursor: none;
-  }
-  
-  a, button {
-    cursor: none;
-  }
+/* Cursor styles */
+a, button {
+  cursor: pointer;
 }
 
 /* ===========================================

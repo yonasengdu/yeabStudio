@@ -106,7 +106,7 @@ export default function About() {
             <Reveal direction="left" className="about-bio__image-wrapper">
               <div className="about-bio__image">
                 <img 
-                  src="/images/artist/IMG_2206.JPG" 
+                  src="/images/artist/about portrait.JPG" 
                   alt="Artist portrait"
                   onError={(e) => {
                     e.target.style.display = 'none'
@@ -178,7 +178,7 @@ export default function About() {
             <Reveal direction="right" delay={200}>
               <div className="about-approach__image">
                 <img 
-                  src="/images/artist/studio.jpg" 
+                  src="/images/artworks/15.jpg" 
                   alt="Artist in studio"
                   onError={(e) => {
                     e.target.style.display = 'none'
@@ -263,15 +263,12 @@ export default function About() {
         <Reveal direction="scale">
           <div className="about-studio__image-wrapper">
             <img 
-              src="/images/artist/studio-wide.jpg" 
+              src="/images/artist/studio.png" 
               alt="Artist studio"
               className="about-studio__image"
               onError={(e) => {
-                e.target.src = '/images/artist/studio.jpg'
-                e.target.onerror = () => {
-                  e.target.parentElement.classList.add('about-studio__placeholder')
-                  e.target.style.display = 'none'
-                }
+                e.target.parentElement.classList.add('about-studio__placeholder')
+                e.target.style.display = 'none'
               }}
             />
             <div className="about-studio__overlay">
