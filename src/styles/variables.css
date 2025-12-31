@@ -3,20 +3,22 @@
    =========================================== */
 
 :root {
-  /* Typography */
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Typography - Refined & Elegant */
+  --font-heading: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  --font-accent: 'Italiana', 'Cormorant Garamond', serif;
   
   /* Font Sizes - Fluid Typography */
-  --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.8rem);
-  --text-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.9rem);
-  --text-base: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
-  --text-lg: clamp(1.1rem, 1rem + 0.5vw, 1.25rem);
-  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
-  --text-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
-  --text-3xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);
-  --text-4xl: clamp(2.5rem, 2rem + 2.5vw, 4rem);
-  --text-5xl: clamp(3rem, 2rem + 5vw, 6rem);
+  --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.75rem);
+  --text-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.875rem);
+  --text-base: clamp(0.95rem, 0.9rem + 0.25vw, 1rem);
+  --text-lg: clamp(1.1rem, 1rem + 0.5vw, 1.2rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.4rem);
+  --text-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 1.875rem);
+  --text-3xl: clamp(2rem, 1.5rem + 2.5vw, 2.75rem);
+  --text-4xl: clamp(2.5rem, 2rem + 2.5vw, 3.75rem);
+  --text-5xl: clamp(3rem, 2rem + 5vw, 5.5rem);
   
   /* Font Weights */
   --weight-light: 300;

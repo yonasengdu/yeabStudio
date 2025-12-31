@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { artworks } from '../data/artworks'
 import { useScrollReveal, useCountUp } from '../hooks/useScrollReveal'
@@ -32,38 +32,6 @@ function Counter({ end, suffix = '' }) {
   return <span ref={ref}>{count}{suffix}</span>
 }
 
-// Magnetic button
-function MagneticButton({ children, to, className = '' }) {
-  const btnRef = useRef(null)
-  
-  const handleMouseMove = (e) => {
-    const btn = btnRef.current
-    if (!btn) return
-    const rect = btn.getBoundingClientRect()
-    const x = e.clientX - rect.left - rect.width / 2
-    const y = e.clientY - rect.top - rect.height / 2
-    btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`
-  }
-  
-  const handleMouseLeave = () => {
-    if (btnRef.current) {
-      btnRef.current.style.transform = 'translate(0, 0)'
-    }
-  }
-
-  return (
-    <Link 
-      ref={btnRef}
-      to={to}
-      className={`btn magnetic ${className}`}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
-      {children}
-    </Link>
-  )
-}
-
 // Filter categories
 const categories = [
   { id: 'all', label: 'All Works' },
@@ -76,8 +44,6 @@ const categories = [
 export default function Portfolio() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [activeFilter, setActiveFilter] = useState(searchParams.get('category') || 'all')
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
-  const [hoveredArtwork, setHoveredArtwork] = useState(null)
 
   useEffect(() => {
     const category = searchParams.get('category')
@@ -85,14 +51,6 @@ export default function Portfolio() {
       setActiveFilter(category)
     }
   }, [searchParams])
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePos({ x: e.clientX, y: e.clientY })
-    }
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
 
   const handleFilterChange = (filter) => {
     setActiveFilter(filter)
@@ -107,48 +65,34 @@ export default function Portfolio() {
     ? artworks 
     : artworks.filter(a => a.category === activeFilter)
 
-  // Get featured artwork for hero
-  const featuredArtwork = artworks.find(a => a.featured) || artworks[0]
-
   return (
     <div className="portfolio-page">
+      {/* Global background */}
+      <div className="page-bg">
+        <div className="page-bg__grid"></div>
+        <div className="page-bg__noise"></div>
+      </div>
+
       {/* Hero Section */}
       <section className="portfolio-hero">
-        <div className="portfolio-hero__bg">
-          <div 
-            className="portfolio-hero__orb portfolio-hero__orb--1"
-            style={{ transform: `translate(${mousePos.x * 0.02}px, ${mousePos.y * 0.02}px)` }}
-          ></div>
-          <div 
-            className="portfolio-hero__orb portfolio-hero__orb--2"
-            style={{ transform: `translate(${mousePos.x * -0.015}px, ${mousePos.y * -0.015}px)` }}
-          ></div>
-          <div className="portfolio-hero__grid"></div>
-          <div className="portfolio-hero__noise"></div>
-          <div className="portfolio-hero__shape portfolio-hero__shape--1"></div>
-          <div className="portfolio-hero__shape portfolio-hero__shape--2"></div>
-        </div>
-
         <div className="container">
           <div className="portfolio-hero__content">
-            <span className="portfolio-hero__label fade-up">Collection</span>
+            <span className="portfolio-hero__label">
+              <span className="portfolio-hero__label-icon">◈</span>
+              Collection
+            </span>
             <h1 className="portfolio-hero__title">
-              <span className="portfolio-hero__title-line fade-up" style={{ animationDelay: '100ms' }}>VISUAL</span>
-              <span className="portfolio-hero__title-line portfolio-hero__title-line--outline fade-up" style={{ animationDelay: '200ms' }}>WORKS</span>
+              <span className="portfolio-hero__title-line">Visual</span>
+              <span className="portfolio-hero__title-line portfolio-hero__title-line--accent">Works</span>
             </h1>
-            <p className="portfolio-hero__subtitle fade-up" style={{ animationDelay: '300ms' }}>
+            <p className="portfolio-hero__subtitle">
               A curated collection of paintings, drawings, and mixed media explorations
             </p>
-            <div className="portfolio-hero__count fade-up" style={{ animationDelay: '400ms' }}>
+            <div className="portfolio-hero__count">
               <span className="portfolio-hero__count-number">{artworks.length}</span>
               <span className="portfolio-hero__count-label">Artworks</span>
             </div>
           </div>
-        </div>
-
-        <div className="portfolio-hero__scroll">
-          <span>Explore collection</span>
-          <div className="portfolio-hero__scroll-line"></div>
         </div>
       </section>
 
@@ -186,13 +130,11 @@ export default function Portfolio() {
               <Reveal 
                 key={artwork.id} 
                 delay={Math.min(index * 50, 300)}
-                direction={index % 3 === 0 ? 'up' : index % 3 === 1 ? 'left' : 'right'}
+                direction="up"
               >
                 <Link 
                   to={`/artwork/${artwork.id}`}
                   className={`portfolio-item ${index % 5 === 0 ? 'portfolio-item--large' : ''}`}
-                  onMouseEnter={() => setHoveredArtwork(artwork.id)}
-                  onMouseLeave={() => setHoveredArtwork(null)}
                 >
                   <div className="portfolio-item__image">
                     <img 
@@ -240,10 +182,6 @@ export default function Portfolio() {
 
       {/* Featured Series */}
       <section className="portfolio-featured">
-        <div className="portfolio-featured__bg">
-          <div className="portfolio-featured__line portfolio-featured__line--1"></div>
-          <div className="portfolio-featured__line portfolio-featured__line--2"></div>
-        </div>
         <div className="container">
           <div className="portfolio-featured__grid">
             <Reveal direction="left">
@@ -338,19 +276,17 @@ export default function Portfolio() {
 
       {/* Commission CTA */}
       <section className="portfolio-cta">
-        <div className="portfolio-cta__bg">
-          <div className="portfolio-cta__orb portfolio-cta__orb--1"></div>
-          <div className="portfolio-cta__orb portfolio-cta__orb--2"></div>
-          <div className="portfolio-cta__grid"></div>
-        </div>
         <div className="container">
           <div className="portfolio-cta__content">
             <Reveal>
-              <span className="portfolio-cta__label">Commission</span>
+              <span className="portfolio-cta__label">
+                <span className="portfolio-cta__label-icon">◈</span>
+                Commission
+              </span>
             </Reveal>
             <Reveal delay={100}>
               <h2 className="portfolio-cta__title">
-                Let's Create Your <span className="highlight">Vision</span>
+                Let's Create Your <span className="portfolio-cta__title-accent">Vision</span>
               </h2>
             </Reveal>
             <Reveal delay={200}>
@@ -360,12 +296,10 @@ export default function Portfolio() {
             </Reveal>
             <Reveal delay={300}>
               <div className="portfolio-cta__actions">
-                <MagneticButton to="/#contact">Start a Conversation</MagneticButton>
+                <Link to="/#contact" className="btn">Start a Conversation</Link>
                 <Link to="/about" className="portfolio-cta__link">
                   <span>Learn About My Process</span>
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+                  <span className="portfolio-cta__link-arrow">→</span>
                 </Link>
               </div>
             </Reveal>

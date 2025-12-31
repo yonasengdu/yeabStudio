@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 import { exhibitions } from '../data/exhibitions'
 import { useScrollReveal, useCountUp } from '../hooks/useScrollReveal'
 
@@ -32,50 +31,8 @@ function Counter({ end, suffix = '' }) {
   return <span ref={ref}>{count}{suffix}</span>
 }
 
-// Magnetic link component
-function MagneticLink({ children, to, className = '' }) {
-  const handleMouseMove = (e) => {
-    const btn = e.currentTarget
-    const rect = btn.getBoundingClientRect()
-    const x = e.clientX - rect.left - rect.width / 2
-    const y = e.clientY - rect.top - rect.height / 2
-    btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`
-  }
-  
-  const handleMouseLeave = (e) => {
-    e.currentTarget.style.transform = 'translate(0, 0)'
-  }
-
-  return (
-    <Link 
-      to={to}
-      className={`btn magnetic ${className}`}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
-      {children}
-    </Link>
-  )
-}
-
 export default function About() {
   const recentExhibitions = exhibitions.slice(0, 6)
-  const [scrollY, setScrollY] = useState(0)
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePos({ x: e.clientX, y: e.clientY })
-    }
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
 
   const skills = {
     mediums: ['Oil on Canvas', 'Acrylic Paint', 'Mixed Media', 'Charcoal Drawing', 'Watercolor', 'Digital Art', 'Installation'],
@@ -85,41 +42,28 @@ export default function About() {
 
   return (
     <div className="about-page">
+      {/* Global background from Home */}
+      <div className="page-bg">
+        <div className="page-bg__grid"></div>
+        <div className="page-bg__noise"></div>
+      </div>
+
       {/* Hero Section */}
       <section className="about-hero">
-        {/* Framer-style background */}
-        <div className="about-hero__bg">
-          <div 
-            className="about-hero__orb about-hero__orb--1"
-            style={{ transform: `translate(${mousePos.x * 0.02}px, ${mousePos.y * 0.02}px)` }}
-          ></div>
-          <div 
-            className="about-hero__orb about-hero__orb--2"
-            style={{ transform: `translate(${mousePos.x * -0.015}px, ${mousePos.y * -0.015}px)` }}
-          ></div>
-          <div className="about-hero__grid"></div>
-          <div className="about-hero__noise"></div>
-          <div className="about-hero__shape about-hero__shape--1"></div>
-          <div className="about-hero__shape about-hero__shape--2"></div>
-        </div>
-
         <div className="container">
           <div className="about-hero__content">
-            <span className="about-hero__label fade-up">About the Artist</span>
+            <span className="about-hero__label">
+              <span className="about-hero__label-icon">◈</span>
+              About the Artist
+            </span>
             <h1 className="about-hero__title">
-              <span className="about-hero__title-line fade-up" style={{ animationDelay: '100ms' }}>THE STORY</span>
-              <span className="about-hero__title-line about-hero__title-line--outline fade-up" style={{ animationDelay: '200ms' }}>BEHIND</span>
-              <span className="about-hero__title-line fade-up" style={{ animationDelay: '300ms' }}>THE ART</span>
+              <span className="about-hero__title-line">The Story</span>
+              <span className="about-hero__title-line about-hero__title-line--accent">Behind the Art</span>
             </h1>
-            <p className="about-hero__subtitle fade-up" style={{ animationDelay: '400ms' }}>
+            <p className="about-hero__subtitle">
               A journey through color, form, and emotion
             </p>
           </div>
-        </div>
-
-        <div className="about-hero__scroll">
-          <span>Discover more</span>
-          <div className="about-hero__scroll-line"></div>
         </div>
       </section>
 
@@ -162,7 +106,7 @@ export default function About() {
             <Reveal direction="left" className="about-bio__image-wrapper">
               <div className="about-bio__image">
                 <img 
-                  src="/images/artist/portrait.jpg" 
+                  src="/images/artist/IMG_2206.JPG" 
                   alt="Artist portrait"
                   onError={(e) => {
                     e.target.style.display = 'none'
@@ -206,9 +150,6 @@ export default function About() {
 
       {/* Artistic Approach Section */}
       <section className="about-approach">
-        <div className="about-approach__bg">
-          <div className="about-approach__orb"></div>
-        </div>
         <div className="container">
           <div className="about-approach__grid">
             <div className="about-approach__content">
@@ -284,10 +225,6 @@ export default function About() {
 
       {/* Exhibitions Section */}
       <section className="about-exhibitions" id="exhibitions">
-        <div className="about-exhibitions__bg">
-          <div className="about-exhibitions__line about-exhibitions__line--1"></div>
-          <div className="about-exhibitions__line about-exhibitions__line--2"></div>
-        </div>
         <div className="container">
           <div className="about-exhibitions__header">
             <Reveal>
@@ -329,7 +266,6 @@ export default function About() {
               src="/images/artist/studio-wide.jpg" 
               alt="Artist studio"
               className="about-studio__image"
-              style={{ transform: `translateY(${scrollY * 0.1}px)` }}
               onError={(e) => {
                 e.target.src = '/images/artist/studio.jpg'
                 e.target.onerror = () => {
@@ -347,19 +283,17 @@ export default function About() {
 
       {/* CTA Section */}
       <section className="about-cta">
-        <div className="about-cta__bg">
-          <div className="about-cta__orb about-cta__orb--1"></div>
-          <div className="about-cta__orb about-cta__orb--2"></div>
-          <div className="about-cta__grid"></div>
-        </div>
         <div className="container">
           <div className="about-cta__content">
             <Reveal>
-              <span className="about-cta__label">Collaborate</span>
+              <span className="about-cta__label">
+                <span className="about-cta__label-icon">◈</span>
+                Collaborate
+              </span>
             </Reveal>
             <Reveal delay={100}>
               <h2 className="about-cta__title">
-                Let's Create <span className="highlight">Together</span>
+                Let's Create <span className="about-cta__title-accent">Together</span>
               </h2>
             </Reveal>
             <Reveal delay={200}>
@@ -369,12 +303,10 @@ export default function About() {
             </Reveal>
             <Reveal delay={300}>
               <div className="about-cta__actions">
-                <MagneticLink to="/#contact">Get in Touch</MagneticLink>
+                <Link to="/#contact" className="btn">Get in Touch</Link>
                 <Link to="/portfolio" className="about-cta__link">
                   <span>View Portfolio</span>
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+                  <span className="about-cta__link-arrow">→</span>
                 </Link>
               </div>
             </Reveal>
