@@ -32,18 +32,37 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=yeabstudio --commit-dirty=true
 
-      - name: Comment PR with preview URL
-        if: github.event_name == 'pull_request'
+      - name: Extract deployment URL
+        id: url
+        run: |
+          URL=$(echo '${{ steps.deploy.outputs.command-output }}' | grep -oE 'https://[a-z0-9-]+\.yeabstudio\.pages\.dev' | head -1)
+          echo "preview_url=$URL" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Deployment
         uses: actions/github-script@v7
         with:
           script: |
-            const output = `${{ steps.deploy.outputs.command-output }}`;
-            const urlMatch = output.match(/https:\/\/[a-z0-9-]+\.yeabstudio\.pages\.dev/);
-            const previewUrl = urlMatch ? urlMatch[0] : 'Check deployment logs for URL';
+            const previewUrl = '${{ steps.url.outputs.preview_url }}';
+            const environment = context.eventName === 'pull_request' 
+              ? `preview-pr-${context.issue.number}` 
+              : 'production';
             
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
+            const deployment = await github.rest.repos.createDeployment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `## Cloudflare Pages Preview\n\n🚀 **Preview URL:** ${previewUrl}\n\nDeployment completed successfully!`
+              ref: context.sha,
+              environment,
+              auto_merge: false,
+              required_contexts: [],
+              description: 'Cloudflare Pages Deployment'
+            });
+            
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: deployment.data.id,
+              state: 'success',
+              environment_url: previewUrl,
+              log_url: `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              description: 'Deployment successful'
             });
