@@ -25,8 +25,44 @@ jobs:
       - run: npm run build
 
       - name: Deploy to Cloudflare Pages
+        id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=yeabstudio
+          command: pages deploy dist --project-name=yeabstudio --commit-dirty=true
+
+      - name: Extract deployment URL
+        id: url
+        run: |
+          URL=$(echo '${{ steps.deploy.outputs.command-output }}' | grep -oE 'https://[a-z0-9-]+\.yeabstudio\.pages\.dev' | head -1)
+          echo "preview_url=$URL" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Deployment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const previewUrl = '${{ steps.url.outputs.preview_url }}';
+            const environment = context.eventName === 'pull_request' 
+              ? `preview-pr-${context.issue.number}` 
+              : 'production';
+            
+            const deployment = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: context.sha,
+              environment,
+              auto_merge: false,
+              required_contexts: [],
+              description: 'Cloudflare Pages Deployment'
+            });
+            
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: deployment.data.id,
+              state: 'success',
+              environment_url: previewUrl,
+              log_url: `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              description: 'Deployment successful'
+            });

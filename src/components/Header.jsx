@@ -65,9 +65,13 @@ export default function Header() {
           >
             Artworks
           </NavLink>
-          <a href="/#contact" className="nav__link" onClick={closeMenu}>
-            Contacts
-          </a>
+          <NavLink 
+            to="/contact" 
+            className={({ isActive }) => `nav__link ${isActive ? 'nav__link--active' : ''}`}
+            onClick={closeMenu}
+          >
+            Contact
+          </NavLink>
         </nav>
 
         <button 
